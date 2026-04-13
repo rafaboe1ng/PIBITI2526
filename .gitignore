@@ -1,0 +1,44 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python tooling caches
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.pyre/
+.hypothesis/
+
+# Build and distribution artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Logs and local databases
+*.log
+*.sqlite3
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local environment/config files
+.env
+.env.*
+
+# Repository-specific generated outputs
+test_afr_improved_multi_agent_extractor/*_extraction.json
+test_afr_improved_multi_agent_extractor/*_summary.json
+
+# Requested to ignore in this repository
+requirements.txt

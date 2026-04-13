@@ -39,6 +39,7 @@ Thumbs.db
 # Repository-specific generated outputs
 test_afr_improved_multi_agent_extractor/*_extraction.json
 test_afr_improved_multi_agent_extractor/*_summary.json
+test_afr_improved_multi_agent_extractor/*.txt
 
 # Requested to ignore in this repository
 requirements.txt

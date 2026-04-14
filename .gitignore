@@ -27,6 +27,7 @@ dist/
 *.sqlite3
 
 # IDE and OS files
+.claude
 .vscode/
 .idea/
 .DS_Store

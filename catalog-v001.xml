@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="http://www.semanticweb.org/rafab/ontologies/manufacturing_core" uri="manufacturing_core.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core" uri="Material_Core_Ontology.owl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1776898946864" name="http://www.semanticweb.org/athon.leite/ontologies/2015/10/untitled-ontology-41" uri="Material_Core_Ontology.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1776898946864" name="http://www.semanticweb.org/rafab/ontologies/PIBITI2526" uri="PIBITI2526.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1776898946864" name="http://www.semanticweb.org/rafab/ontologies/manufacturing_core" uri="manufacturing_core.owl"/>
+    </group>
+</catalog>

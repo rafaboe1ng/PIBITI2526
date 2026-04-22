@@ -1,0 +1,497 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#"
+     xml:base="http://www.semanticweb.org/rafab/ontologies/manufacturing_core"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:mfg="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#">
+
+    <owl:Ontology rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core">
+        <rdfs:label xml:lang="en">Manufacturing Core Ontology</rdfs:label>
+        <rdfs:comment xml:lang="en">Lightweight foundation ontology for the manufacturing domain. Provides shared vocabulary for products, processes, resources (machines, tools, operators, workstations) and process plans. Designed to be imported by domain-specific Specialized Application Ontologies (e.g., sheet metal parts). Built without committing to a specific upper ontology so that it stays focused on the operational shop-floor scope.</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="https://doi.org/10.1007/s10845-024-02425-z"/>
+    </owl:Ontology>
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // 1. Object properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- requiresProcess: a Product requires the application of a ManufacturingProcess -->
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#requiresProcess">
+        <rdfs:label xml:lang="en">requires process</rdfs:label>
+        <rdfs:comment xml:lang="en">Asserts that producing the subject Product (or feature) requires the execution of an instance of the object ManufacturingProcess.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Product"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingProcess"/>
+    </owl:ObjectProperty>
+
+    <!-- isPerformedBy: a ManufacturingProcess is executed by a Machine -->
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#isPerformedBy">
+        <rdfs:label xml:lang="en">is performed by</rdfs:label>
+        <rdfs:comment xml:lang="en">Links a ManufacturingProcess to the Machine that physically executes it. Inverse of performs.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingProcess"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Machine"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#performs"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#performs">
+        <rdfs:label xml:lang="en">performs</rdfs:label>
+        <rdfs:comment xml:lang="en">Links a Machine to the ManufacturingProcess it executes.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Machine"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingProcess"/>
+    </owl:ObjectProperty>
+
+    <!-- usesTool -->
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#usesTool">
+        <rdfs:label xml:lang="en">uses tool</rdfs:label>
+        <rdfs:comment xml:lang="en">Links a ManufacturingProcess (or Machine) to a Tool it employs (e.g., punch, drill bit, die).</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingProcess"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Tool"/>
+    </owl:ObjectProperty>
+
+    <!-- isOperatedBy -->
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#isOperatedBy">
+        <rdfs:label xml:lang="en">is operated by</rdfs:label>
+        <rdfs:comment xml:lang="en">Links a Machine to the Operator (human or robotic) responsible for running it.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Machine"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Operator"/>
+    </owl:ObjectProperty>
+
+    <!-- locatedAt -->
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#locatedAt">
+        <rdfs:label xml:lang="en">located at</rdfs:label>
+        <rdfs:comment xml:lang="en">Links a Machine to the Workstation where it physically resides.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Machine"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Workstation"/>
+    </owl:ObjectProperty>
+
+    <!-- planFor -->
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#planFor">
+        <rdfs:label xml:lang="en">plan for</rdfs:label>
+        <rdfs:comment xml:lang="en">Links a ManufacturingPlan to the Product it manufactures.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingPlan"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Product"/>
+    </owl:ObjectProperty>
+
+    <!-- includesStep -->
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#includesStep">
+        <rdfs:label xml:lang="en">includes step</rdfs:label>
+        <rdfs:comment xml:lang="en">Links a ManufacturingPlan to a ProcessStep that composes it.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingPlan"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ProcessStep"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#stepOf"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#stepOf">
+        <rdfs:label xml:lang="en">step of</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ProcessStep"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingPlan"/>
+    </owl:ObjectProperty>
+
+    <!-- hasNextStep -->
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#hasNextStep">
+        <rdfs:label xml:lang="en">has next step</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines the strict ordering between two consecutive ProcessSteps within the same ManufacturingPlan.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ProcessStep"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ProcessStep"/>
+    </owl:ObjectProperty>
+
+    <!-- realizes: a ProcessStep realizes (executes an instance of) a ManufacturingProcess class -->
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#realizes">
+        <rdfs:label xml:lang="en">realizes</rdfs:label>
+        <rdfs:comment xml:lang="en">Links a ProcessStep to the ManufacturingProcess instance it executes.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ProcessStep"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingProcess"/>
+    </owl:ObjectProperty>
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // 2. Top-level classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Product: the artifact being manufactured. Parent of any specialized part class in SAOs. -->
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Product">
+        <rdfs:label xml:lang="en">Product</rdfs:label>
+        <rdfs:comment xml:lang="en">A physical artifact produced (or to be produced) by one or more ManufacturingProcesses. Specialized Application Ontologies subclass Product to introduce domain-specific part types (e.g., SheetMetalPart).</rdfs:comment>
+    </owl:Class>
+
+    <!-- ManufacturingResource: top of the resource side (machines, tools, operators, workstations) -->
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingResource">
+        <rdfs:label xml:lang="en">Manufacturing Resource</rdfs:label>
+        <rdfs:comment xml:lang="en">Any participant in a manufacturing process other than the workpiece itself: machines, tools, human operators, or workstations.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Machine">
+        <rdfs:label xml:lang="en">Machine</rdfs:label>
+        <rdfs:comment xml:lang="en">A piece of equipment that physically executes a ManufacturingProcess on a Product.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingResource"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Tool">
+        <rdfs:label xml:lang="en">Tool</rdfs:label>
+        <rdfs:comment xml:lang="en">A consumable or reusable artifact employed by a Machine or Operator during a ManufacturingProcess (e.g., punch, drill bit, bending die).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingResource"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Operator">
+        <rdfs:label xml:lang="en">Operator</rdfs:label>
+        <rdfs:comment xml:lang="en">A human or robotic agent that operates Machines and supervises ManufacturingProcesses.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingResource"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Workstation">
+        <rdfs:label xml:lang="en">Workstation</rdfs:label>
+        <rdfs:comment xml:lang="en">A physical location on the shop floor where one or more Machines reside.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingResource"/>
+    </owl:Class>
+
+    <!-- ManufacturingProcess: top of the process side -->
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingProcess">
+        <rdfs:label xml:lang="en">Manufacturing Process</rdfs:label>
+        <rdfs:comment xml:lang="en">A controlled physical or chemical operation that transforms a Product. Top class of the process taxonomy.</rdfs:comment>
+    </owl:Class>
+
+    <!-- Plan structure -->
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingPlan">
+        <rdfs:label xml:lang="en">Manufacturing Plan</rdfs:label>
+        <rdfs:comment xml:lang="en">An ordered set of ProcessSteps describing how a specific Product is manufactured.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ProcessStep">
+        <rdfs:label xml:lang="en">Process Step</rdfs:label>
+        <rdfs:comment xml:lang="en">An individual operation within a ManufacturingPlan. Each ProcessStep realizes one ManufacturingProcess instance.</rdfs:comment>
+    </owl:Class>
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // 3. Machine subtypes (one per process family)
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#CuttingMachine">
+        <rdfs:label xml:lang="en">Cutting Machine</rdfs:label>
+        <rdfs:comment xml:lang="en">Machine that performs Cutting processes (punch press, laser cutter, waterjet, shear).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Machine"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#DrillingMachine">
+        <rdfs:label xml:lang="en">Drilling Machine</rdfs:label>
+        <rdfs:comment xml:lang="en">Machine that performs Drilling processes (drill press, CNC drill).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Machine"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#FormingMachine">
+        <rdfs:label xml:lang="en">Forming Machine</rdfs:label>
+        <rdfs:comment xml:lang="en">Machine that performs Forming processes (press brake, hydroforming press, stamping press).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Machine"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#FinishingMachine">
+        <rdfs:label xml:lang="en">Finishing Machine</rdfs:label>
+        <rdfs:comment xml:lang="en">Machine that performs Finishing processes (grinder, deburring station, chamfering machine).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Machine"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ThermalTreatmentEquipment">
+        <rdfs:label xml:lang="en">Thermal Treatment Equipment</rdfs:label>
+        <rdfs:comment xml:lang="en">Equipment that performs ThermalTreatment processes (furnace, quench tank).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Machine"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#SurfaceTreatmentEquipment">
+        <rdfs:label xml:lang="en">Surface Treatment Equipment</rdfs:label>
+        <rdfs:comment xml:lang="en">Equipment that performs SurfaceTreatment processes (paint booth, anodizing line, plating tank).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Machine"/>
+    </owl:Class>
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // 4. Process taxonomy (6 families, scoped to sheet metal manufacturing)
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Family 1: Cutting -->
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Cutting">
+        <rdfs:label xml:lang="en">Cutting</rdfs:label>
+        <rdfs:comment xml:lang="en">Material-removal process that separates a workpiece into parts or generates outline/holes/slots without significant plastic deformation. Always performed by a CuttingMachine.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingProcess"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#isPerformedBy"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#CuttingMachine"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Blanking">
+        <rdfs:label xml:lang="en">Blanking</rdfs:label>
+        <rdfs:comment xml:lang="en">Cutting operation that removes a flat blank from a sheet stock; usually the first step in producing a sheet metal part.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Cutting"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Shearing">
+        <rdfs:label xml:lang="en">Shearing</rdfs:label>
+        <rdfs:comment xml:lang="en">Straight-line cutting between an upper and a lower blade.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Cutting"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Punching">
+        <rdfs:label xml:lang="en">Punching</rdfs:label>
+        <rdfs:comment xml:lang="en">Localised cutting that produces holes or slots by forcing a punch through the sheet into a die. Primary process for AttachmentHole and Slot features.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Cutting"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#LaserCutting">
+        <rdfs:label xml:lang="en">Laser Cutting</rdfs:label>
+        <rdfs:comment xml:lang="en">Thermal cutting using a focused laser beam; alternative to punching for complex contours.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Cutting"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#WaterjetCutting">
+        <rdfs:label xml:lang="en">Waterjet Cutting</rdfs:label>
+        <rdfs:comment xml:lang="en">Cold cutting using a high-pressure water (with abrasive) jet; preserves heat-sensitive material properties.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Cutting"/>
+    </owl:Class>
+
+    <!-- Family 2: Drilling -->
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Drilling">
+        <rdfs:label xml:lang="en">Drilling</rdfs:label>
+        <rdfs:comment xml:lang="en">Hole-making by a rotating cutting tool (drill bit). Used when punching is not viable.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingProcess"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#isPerformedBy"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#DrillingMachine"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Tapping">
+        <rdfs:label xml:lang="en">Tapping</rdfs:label>
+        <rdfs:comment xml:lang="en">Generation of internal threads in a previously made hole. Required process for Thread features.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Drilling"/>
+    </owl:Class>
+
+    <!-- Family 3: Forming -->
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Forming">
+        <rdfs:label xml:lang="en">Forming</rdfs:label>
+        <rdfs:comment xml:lang="en">Plastic-deformation process that changes the geometry of a sheet metal part without removing material.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingProcess"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#isPerformedBy"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#FormingMachine"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Bending">
+        <rdfs:label xml:lang="en">Bending</rdfs:label>
+        <rdfs:comment xml:lang="en">Linear plastic deformation along a bend line, typically by a press brake. Primary process for Flange features.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Forming"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Drawing">
+        <rdfs:label xml:lang="en">Drawing</rdfs:label>
+        <rdfs:comment xml:lang="en">Forming a flat blank into a hollow shape by pulling material into a die cavity. Source process for Boss and DeformedFlange features.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Forming"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Stamping">
+        <rdfs:label xml:lang="en">Stamping</rdfs:label>
+        <rdfs:comment xml:lang="en">Single-stroke press operation combining cutting and forming using a dedicated die.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Forming"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Hydroforming">
+        <rdfs:label xml:lang="en">Hydroforming</rdfs:label>
+        <rdfs:comment xml:lang="en">Forming sheet against a die using high-pressure fluid; suited to deep, complex shapes.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Forming"/>
+    </owl:Class>
+
+    <!-- Family 4: Finishing -->
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Finishing">
+        <rdfs:label xml:lang="en">Finishing</rdfs:label>
+        <rdfs:comment xml:lang="en">Post-shape geometric refinement: edge breaking, surface smoothing, dimensional touch-up.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingProcess"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#isPerformedBy"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#FinishingMachine"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Chamfering">
+        <rdfs:label xml:lang="en">Chamfering</rdfs:label>
+        <rdfs:comment xml:lang="en">Producing a beveled edge between two faces. Required process for Chamfer features.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Finishing"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Deburring">
+        <rdfs:label xml:lang="en">Deburring</rdfs:label>
+        <rdfs:comment xml:lang="en">Removal of burrs left by cutting/punching to obtain safe, clean edges.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Finishing"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Grinding">
+        <rdfs:label xml:lang="en">Grinding</rdfs:label>
+        <rdfs:comment xml:lang="en">Abrasive material-removal process for tight tolerance or surface finish.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Finishing"/>
+    </owl:Class>
+
+    <!-- Family 5: Thermal Treatment -->
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ThermalTreatment">
+        <rdfs:label xml:lang="en">Thermal Treatment</rdfs:label>
+        <rdfs:comment xml:lang="en">Controlled heating/cooling that alters the microstructure and mechanical properties of the part without changing its geometry.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingProcess"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#isPerformedBy"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ThermalTreatmentEquipment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Annealing">
+        <rdfs:label xml:lang="en">Annealing</rdfs:label>
+        <rdfs:comment xml:lang="en">Heating and slow cooling to soften the material and improve formability. Produces the O temper state.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ThermalTreatment"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Tempering">
+        <rdfs:label xml:lang="en">Tempering</rdfs:label>
+        <rdfs:comment xml:lang="en">Heat treatment that adjusts hardness/ductility balance after solution treatment. Produces aluminum temper designations such as T3, T4, T6, T81.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ThermalTreatment"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#StressRelieving">
+        <rdfs:label xml:lang="en">Stress Relieving</rdfs:label>
+        <rdfs:comment xml:lang="en">Low-temperature heating to reduce residual stresses introduced by forming or welding.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ThermalTreatment"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Ageing">
+        <rdfs:label xml:lang="en">Ageing</rdfs:label>
+        <rdfs:comment xml:lang="en">Time-temperature treatment that develops strength via precipitation hardening (natural or artificial ageing).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ThermalTreatment"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Hardening">
+        <rdfs:label xml:lang="en">Hardening</rdfs:label>
+        <rdfs:comment xml:lang="en">Heating + rapid quenching to increase hardness and tensile strength. Produces the AQ (as-quenched) condition.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ThermalTreatment"/>
+    </owl:Class>
+
+    <!-- Family 6: Surface Treatment -->
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#SurfaceTreatment">
+        <rdfs:label xml:lang="en">Surface Treatment</rdfs:label>
+        <rdfs:comment xml:lang="en">Modification of the part's surface for protection, appearance, or functional properties; does not change bulk geometry.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingProcess"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#isPerformedBy"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#SurfaceTreatmentEquipment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Painting">
+        <rdfs:label xml:lang="en">Painting</rdfs:label>
+        <rdfs:comment xml:lang="en">Application of liquid paint film for corrosion protection or aesthetics.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#SurfaceTreatment"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Anodizing">
+        <rdfs:label xml:lang="en">Anodizing</rdfs:label>
+        <rdfs:comment xml:lang="en">Electrolytic oxidation that grows a hard, decorative oxide layer on aluminum surfaces.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#SurfaceTreatment"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#PowderCoating">
+        <rdfs:label xml:lang="en">Powder Coating</rdfs:label>
+        <rdfs:comment xml:lang="en">Electrostatic application of dry powder followed by oven curing.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#SurfaceTreatment"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Plating">
+        <rdfs:label xml:lang="en">Plating</rdfs:label>
+        <rdfs:comment xml:lang="en">Deposition of a thin metal layer (e.g., zinc, nickel) for corrosion or wear resistance.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#SurfaceTreatment"/>
+    </owl:Class>
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // 5. Disjointness axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Top-level: Product, ManufacturingResource, ManufacturingProcess, ManufacturingPlan, ProcessStep are pairwise disjoint -->
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Product"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingResource"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingProcess"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ManufacturingPlan"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ProcessStep"/>
+        </owl:members>
+    </rdf:Description>
+
+    <!-- Resource subtypes are pairwise disjoint -->
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Machine"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Tool"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Operator"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Workstation"/>
+        </owl:members>
+    </rdf:Description>
+
+    <!-- The 6 process families are pairwise disjoint -->
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Cutting"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Drilling"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Forming"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Finishing"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ThermalTreatment"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#SurfaceTreatment"/>
+        </owl:members>
+    </rdf:Description>
+
+    <!-- The 6 Machine families are pairwise disjoint -->
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#CuttingMachine"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#DrillingMachine"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#FormingMachine"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#FinishingMachine"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#ThermalTreatmentEquipment"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#SurfaceTreatmentEquipment"/>
+        </owl:members>
+    </rdf:Description>
+
+</rdf:RDF>

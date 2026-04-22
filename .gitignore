@@ -28,6 +28,7 @@ dist/
 
 # IDE and OS files
 .claude
+.github/
 .vscode/
 .idea/
 .DS_Store
@@ -44,3 +45,4 @@ test_afr_improved_multi_agent_extractor/*.txt
 
 # Requested to ignore in this repository
 requirements.txt
+Bibliografia

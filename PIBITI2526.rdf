@@ -1,16 +1,18 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#"
      xml:base="http://www.semanticweb.org/rafab/ontologies/PIBITI2526"
-     xmlns:ns1="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#"
+     xmlns:mc="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#"
+     xmlns:mfg="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:vann="http://purl.org/vocab/vann/"
-     xmlns:terms="http://purl.org/dc/terms/">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526">
-        <owl:imports rdf:resource="https://w3id.org/mdo/full/1.1/"/>
+        <owl:imports rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core"/>
+        <owl:imports rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core"/>
+        <rdfs:comment xml:lang="en">Specialized Application Ontology (SAO) for sheet metal aerospace parts. Imports the Manufacturing Core (process/resource vocabulary) and the Material Core (material properties). Models domain-specific concepts: Part, SheetMetalPart, ProductFeature taxonomy (Hole, Flange, Web, Corner, Boss, Chamfer, Slot, Thread).</rdfs:comment>
+        <rdfs:label xml:lang="en">PIBITI2526 Specialized Application Ontology</rdfs:label>
     </owl:Ontology>
     
 
@@ -29,9 +31,9 @@
     <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasChildFeature -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasChildFeature">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasParentFeature"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
     </owl:ObjectProperty>
     
 
@@ -40,8 +42,17 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasFeature">
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#isFeatureOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Workpiece"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Part"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasMaterial -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasMaterial">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Part"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Material_Core"/>
     </owl:ObjectProperty>
     
 
@@ -49,9 +60,8 @@
     <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasParentFeature -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasParentFeature">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
     </owl:ObjectProperty>
     
 
@@ -59,8 +69,8 @@
     <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#isFeatureOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#isFeatureOf">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Workpiece"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Part"/>
     </owl:ObjectProperty>
     
 
@@ -76,58 +86,9 @@
     
 
 
-    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasRadius -->
-
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasRadius">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Corner"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasID -->
-
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasID">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
     <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasBendRadius -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasBendRadius">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Flange"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasLength -->
-
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasLength">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Flange"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-    </owl:DatatypeProperty>
-
-<!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasType -->
-
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasType">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Flange"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasWidth -->
-
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasWidth">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Flange"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
     </owl:DatatypeProperty>
@@ -137,38 +98,25 @@
     <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasDiameter -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasDiameter">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Hole"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPositionNormalX -->
+    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasID -->
 
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPositionNormalX">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasID">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPositionNormalY -->
+    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasLength -->
 
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPositionNormalY">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPositionNormalZ -->
-
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPositionNormalZ">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasLength">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Flange"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
     </owl:DatatypeProperty>
     
@@ -177,9 +125,44 @@
     <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasParentID -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasParentID">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPartName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPartName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Part"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPositionNormalX -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPositionNormalX">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPositionNormalY -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPositionNormalY">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPositionNormalZ -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPositionNormalZ">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
     </owl:DatatypeProperty>
     
 
@@ -187,8 +170,7 @@
     <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPositionPointX -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPositionPointX">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
     </owl:DatatypeProperty>
     
@@ -197,8 +179,7 @@
     <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPositionPointY -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPositionPointY">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
     </owl:DatatypeProperty>
     
@@ -207,8 +188,43 @@
     <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPositionPointZ -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPositionPointZ">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasRadius -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasRadius">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Corner"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasThickness -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasThickness">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Part"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasType">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Flange"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasWidth -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasWidth">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Flange"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
     </owl:DatatypeProperty>
     
@@ -217,29 +233,8 @@
     <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#rawFeatureLabel -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#rawFeatureLabel">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPartName -->
-
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasPartName">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Workpiece"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasThickness -->
-
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#hasThickness">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Workpiece"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
     </owl:DatatypeProperty>
     
 
@@ -275,7 +270,7 @@
     <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Boss -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Boss">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
     </owl:Class>
     
 
@@ -283,7 +278,7 @@
     <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Chamfer -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Chamfer">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
     </owl:Class>
     
 
@@ -291,7 +286,7 @@
     <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Corner -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Corner">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
     </owl:Class>
     
 
@@ -307,7 +302,7 @@
     <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Flange -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Flange">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
     </owl:Class>
     
 
@@ -315,21 +310,41 @@
     <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Hole -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Hole">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature -->
+    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Part -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Part">
+        <owl:equivalentClass rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Product"/>
+        <rdfs:comment xml:lang="en">A discrete manufactured component. Domain extension of mfg:Product.</rdfs:comment>
+        <rdfs:label xml:lang="en">Part</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Product"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#SheetMetalPart -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#SheetMetalPart">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Part"/>
+    </owl:Class>
     
 
 
     <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Slot -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Slot">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
     </owl:Class>
     
 
@@ -345,7 +360,7 @@
     <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Thread -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Thread">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
     </owl:Class>
     
 
@@ -361,14 +376,8 @@
     <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Web -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Web">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#MachiningFeature"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ProductFeature"/>
     </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Workpiece -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Workpiece"/>
     
 
 
@@ -383,10 +392,42 @@
     
 
 
+    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Tempering_AQ -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Tempering_AQ">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Tempering"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Tempering_O -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Tempering_O">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Tempering"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Tempering_T3T4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Tempering_T3T4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Tempering"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Tempering_T6T81 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Tempering_T6T81">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/manufacturing_core#Tempering"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1">
-        <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Workpiece"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#SheetMetalPart"/>
         <hasFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <hasFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_02"/>
         <hasFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_03"/>
@@ -454,7 +495,6 @@
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>web</rawFeatureLabel>
     </owl:NamedIndividual>
     
 
@@ -465,16 +505,15 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#AttachmentHole"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</hasID>
         <hasDiameter rdf:datatype="http://www.w3.org/2001/XMLSchema#double">3.5</hasDiameter>
+        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</hasID>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-1.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-30.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-12.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>attachment hole</rawFeatureLabel>
     </owl:NamedIndividual>
     
 
@@ -485,16 +524,15 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#AttachmentHole"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</hasID>
         <hasDiameter rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.0</hasDiameter>
+        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</hasID>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-1.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-22.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-6.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>attachment hole</rawFeatureLabel>
     </owl:NamedIndividual>
     
 
@@ -505,16 +543,15 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#AttachmentHole"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</hasID>
         <hasDiameter rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.5</hasDiameter>
+        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</hasID>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-1.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-14.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>attachment hole</rawFeatureLabel>
     </owl:NamedIndividual>
     
 
@@ -525,16 +562,15 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#AttachmentHole"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</hasID>
         <hasDiameter rdf:datatype="http://www.w3.org/2001/XMLSchema#double">5.0</hasDiameter>
+        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</hasID>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-1.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-6.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">6.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>attachment hole</rawFeatureLabel>
     </owl:NamedIndividual>
     
 
@@ -545,16 +581,15 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#AttachmentHole"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</hasID>
         <hasDiameter rdf:datatype="http://www.w3.org/2001/XMLSchema#double">5.5</hasDiameter>
+        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</hasID>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-1.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">2.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">12.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>attachment hole</rawFeatureLabel>
     </owl:NamedIndividual>
     
 
@@ -565,16 +600,15 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#AttachmentHole"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</hasID>
         <hasDiameter rdf:datatype="http://www.w3.org/2001/XMLSchema#double">3.5</hasDiameter>
+        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</hasID>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-1.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">10.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-12.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>attachment hole</rawFeatureLabel>
     </owl:NamedIndividual>
     
 
@@ -585,16 +619,15 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#AttachmentHole"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</hasID>
         <hasDiameter rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.0</hasDiameter>
+        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</hasID>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-1.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">18.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-6.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>attachment hole</rawFeatureLabel>
     </owl:NamedIndividual>
     
 
@@ -605,16 +638,15 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#AttachmentHole"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</hasID>
         <hasDiameter rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.5</hasDiameter>
+        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</hasID>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-1.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">26.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>attachment hole</rawFeatureLabel>
     </owl:NamedIndividual>
     
 
@@ -625,16 +657,15 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#AttachmentHole"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</hasID>
         <hasDiameter rdf:datatype="http://www.w3.org/2001/XMLSchema#double">5.0</hasDiameter>
+        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</hasID>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-1.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">34.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">6.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>attachment hole</rawFeatureLabel>
     </owl:NamedIndividual>
     
 
@@ -645,16 +676,15 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#AttachmentHole"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11</hasID>
         <hasDiameter rdf:datatype="http://www.w3.org/2001/XMLSchema#double">5.5</hasDiameter>
+        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11</hasID>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-1.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">42.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">12.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>attachment hole</rawFeatureLabel>
     </owl:NamedIndividual>
     
 
@@ -665,16 +695,15 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#AttachmentHole"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</hasID>
         <hasDiameter rdf:datatype="http://www.w3.org/2001/XMLSchema#double">3.5</hasDiameter>
+        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</hasID>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-1.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">50.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-12.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>attachment hole</rawFeatureLabel>
     </owl:NamedIndividual>
     
 
@@ -685,16 +714,15 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ToolingHole"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">13</hasID>
         <hasDiameter rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.0</hasDiameter>
+        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">13</hasID>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-1.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">58.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-6.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>tooling hole</rawFeatureLabel>
     </owl:NamedIndividual>
     
 
@@ -705,16 +733,15 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ToolingHole"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">14</hasID>
         <hasDiameter rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.5</hasDiameter>
+        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">14</hasID>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-1.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">66.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>tooling hole</rawFeatureLabel>
     </owl:NamedIndividual>
     
 
@@ -725,16 +752,15 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#ToolingHole"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</hasID>
         <hasDiameter rdf:datatype="http://www.w3.org/2001/XMLSchema#double">5.0</hasDiameter>
+        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</hasID>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-1.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">74.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">6.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>tooling hole</rawFeatureLabel>
     </owl:NamedIndividual>
     
 
@@ -745,16 +771,15 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Corner"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasRadius rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.5</hasRadius>
         <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">16</hasID>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">3.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>corner</rawFeatureLabel>
+        <hasRadius rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.5</hasRadius>
     </owl:NamedIndividual>
     
 
@@ -765,16 +790,15 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Corner"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasRadius rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.5</hasRadius>
         <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">17</hasID>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">11.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">3.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>corner</rawFeatureLabel>
+        <hasRadius rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.5</hasRadius>
     </owl:NamedIndividual>
     
 
@@ -785,16 +809,15 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Corner"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasRadius rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.5</hasRadius>
         <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">18</hasID>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">22.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">3.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>corner</rawFeatureLabel>
+        <hasRadius rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.5</hasRadius>
     </owl:NamedIndividual>
     
 
@@ -805,16 +828,15 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Corner"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasRadius rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.5</hasRadius>
         <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">19</hasID>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">33.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">3.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>corner</rawFeatureLabel>
+        <hasRadius rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.5</hasRadius>
     </owl:NamedIndividual>
     
 
@@ -825,16 +847,15 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Corner"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasRadius rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.5</hasRadius>
         <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">20</hasID>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">44.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">3.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>corner</rawFeatureLabel>
+        <hasRadius rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.5</hasRadius>
     </owl:NamedIndividual>
     
 
@@ -845,16 +866,15 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Corner"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasRadius rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.5</hasRadius>
         <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">21</hasID>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">55.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">3.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>corner</rawFeatureLabel>
+        <hasRadius rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.5</hasRadius>
     </owl:NamedIndividual>
     
 
@@ -865,16 +885,15 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Corner"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasRadius rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.5</hasRadius>
         <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">22</hasID>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">66.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">3.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>corner</rawFeatureLabel>
+        <hasRadius rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.5</hasRadius>
     </owl:NamedIndividual>
     
 
@@ -885,19 +904,18 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#DeformedFlange"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">23</hasID>
         <hasBendRadius rdf:datatype="http://www.w3.org/2001/XMLSchema#double">2.0</hasBendRadius>
+        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">23</hasID>
         <hasLength rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.0</hasLength>
-<hasType>Down, Single, Immediate, Planar, Perpendicular</hasType>
-        <hasWidth rdf:datatype="http://www.w3.org/2001/XMLSchema#double">18.0</hasWidth>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">5.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>deformed flange</rawFeatureLabel>
+        <hasType>Down, Single, Immediate, Planar, Perpendicular</hasType>
+        <hasWidth rdf:datatype="http://www.w3.org/2001/XMLSchema#double">18.0</hasWidth>
     </owl:NamedIndividual>
     
 
@@ -908,19 +926,18 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#DeformedFlange"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">24</hasID>
         <hasBendRadius rdf:datatype="http://www.w3.org/2001/XMLSchema#double">2.3</hasBendRadius>
+        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">24</hasID>
         <hasLength rdf:datatype="http://www.w3.org/2001/XMLSchema#double">4.5</hasLength>
-<hasType>Down, Single, Immediate, Planar, Perpendicular</hasType>
-        <hasWidth rdf:datatype="http://www.w3.org/2001/XMLSchema#double">21.0</hasWidth>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">35.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">5.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>deformed flange</rawFeatureLabel>
+        <hasType>Down, Single, Immediate, Planar, Perpendicular</hasType>
+        <hasWidth rdf:datatype="http://www.w3.org/2001/XMLSchema#double">21.0</hasWidth>
     </owl:NamedIndividual>
     
 
@@ -931,19 +948,18 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#DeformedFlange"/>
         <hasParentFeature rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1_01"/>
         <isFeatureOf rdf:resource="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Val1"/>
-        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">25</hasID>
         <hasBendRadius rdf:datatype="http://www.w3.org/2001/XMLSchema#double">2.6</hasBendRadius>
+        <hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">25</hasID>
         <hasLength rdf:datatype="http://www.w3.org/2001/XMLSchema#double">5.0</hasLength>
-<hasType>Down, Single, Immediate, Planar, Perpendicular</hasType>
-        <hasWidth rdf:datatype="http://www.w3.org/2001/XMLSchema#double">24.0</hasWidth>
+        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionNormalX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</hasPositionNormalX>
         <hasPositionNormalY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalY>
         <hasPositionNormalZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionNormalZ>
-        <hasParentID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasParentID>
         <hasPositionPointX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">70.0</hasPositionPointX>
         <hasPositionPointY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">5.0</hasPositionPointY>
         <hasPositionPointZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</hasPositionPointZ>
-        <rawFeatureLabel>deformed flange</rawFeatureLabel>
+        <hasType>Down, Single, Immediate, Planar, Perpendicular</hasType>
+        <hasWidth rdf:datatype="http://www.w3.org/2001/XMLSchema#double">24.0</hasWidth>
     </owl:NamedIndividual>
     
 
@@ -964,23 +980,9 @@
             <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#StiffeningFlange"/>
         </owl:members>
     </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Boss"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Chamfer"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Corner"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Flange"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Hole"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Slot"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/rafab/ontologies/PIBITI2526#Thread"/>
-        </owl:members>
-    </rdf:Description>
 </rdf:RDF>
 
 
 
 <!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
-
-
 

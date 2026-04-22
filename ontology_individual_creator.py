@@ -9,8 +9,17 @@ from rdflib import Graph, Literal, Namespace
 from rdflib.namespace import RDF, XSD
 
 
-ONTOLOGY_NS = "http://www.semanticweb.org/rafab/ontologies/PIBITI2526#"
+# ---------------------------------------------------------------------------
+# Namespace configuration
+# ---------------------------------------------------------------------------
+# All classes, properties and individuals are written in the PIBITI2526 namespace.
+# ---------------------------------------------------------------------------
 
+PIBITI_NS = "http://www.semanticweb.org/rafab/ontologies/PIBITI2526#"
+
+ALLOWED_RDF_FILENAMES = {"PIBITI2526.rdf"}
+
+PART_CLASS = "SheetMetalPart"
 
 FEATURE_CLASS_MAP = {
 	"web": "Web",
@@ -67,6 +76,10 @@ class FeatureRecord:
 class PairValidationError(Exception):
 	pass
 
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
 
 def safe_identifier(raw: str) -> str:
 	cleaned = re.sub(r"[^A-Za-z0-9_]+", "_", raw.strip())
@@ -251,7 +264,7 @@ def ensure_pair_consistency(
 
 
 def class_for_label(label: str) -> str:
-	return FEATURE_CLASS_MAP.get(label.lower().strip(), "MachiningFeature")
+	return FEATURE_CLASS_MAP.get(label.lower().strip(), "ProductFeature")
 
 
 def add_string(graph: Graph, subject, predicate, value: Optional[str]) -> None:
@@ -270,76 +283,87 @@ def add_double(graph: Graph, subject, predicate, value: Optional[float]) -> None
 
 
 def pair_already_added(graph: Graph, base_name: str) -> bool:
-	ontology = Namespace(ONTOLOGY_NS)
+	pibiti = Namespace(PIBITI_NS)
 	base_token = safe_identifier(base_name)
-	new_workpiece_uri = ontology[base_token]
-	legacy_workpiece_uri = ontology[f"workpiece_{base_token}"]
+	uri = pibiti[base_token]
 	return (
-		(new_workpiece_uri, RDF.type, ontology.Workpiece) in graph
-		or (legacy_workpiece_uri, RDF.type, ontology.Workpiece) in graph
+		(uri, RDF.type, pibiti.SheetMetalPart) in graph
+		or (uri, RDF.type, pibiti.Part) in graph
 	)
 
+
+# ---------------------------------------------------------------------------
+# Core insertion logic
+# ---------------------------------------------------------------------------
 
 def process_pair(graph: Graph, base_name: str, txt_path: Path, json_path: Path) -> Tuple[int, int]:
 	json_data = validate_json_file(json_path)
 	txt_part_name, txt_thickness, features = parse_txt_file(txt_path)
 	ensure_pair_consistency(txt_part_name, txt_thickness, json_data, txt_path, json_path)
 
-	ontology = Namespace(ONTOLOGY_NS)
+	pibiti = Namespace(PIBITI_NS)
 	base_token = safe_identifier(base_name)
 
-	workpiece_uri = ontology[base_token]
-	graph.add((workpiece_uri, RDF.type, ontology.Workpiece))
-	add_string(graph, workpiece_uri, ontology.hasPartName, txt_part_name)
-	add_double(graph, workpiece_uri, ontology.hasThickness, txt_thickness)
+	# --- Part ---
+	part_uri = pibiti[base_token]
+	graph.add((part_uri, RDF.type, pibiti[PART_CLASS]))
+	add_string(graph, part_uri, pibiti.hasPartName, txt_part_name)
+	add_double(graph, part_uri, pibiti.hasThickness, txt_thickness)
 
+	# --- Features ---
 	feature_uri_map = {}
 	for feature in features:
 		feature_id_token = f"{feature.feature_id:02d}"
-		feature_uri = ontology[f"{base_token}_{feature_id_token}"]
+		feature_uri = pibiti[f"{base_token}_{feature_id_token}"]
 		feature_uri_map[feature.feature_id] = feature_uri
 
 		feature_class = class_for_label(feature.label)
-		graph.add((feature_uri, RDF.type, ontology[feature_class]))
-		graph.add((workpiece_uri, ontology.hasFeature, feature_uri))
-		graph.add((feature_uri, ontology.isFeatureOf, workpiece_uri))
+		graph.add((feature_uri, RDF.type, pibiti[feature_class]))
+		graph.add((part_uri, pibiti.hasFeature, feature_uri))
+		graph.add((feature_uri, pibiti.isFeatureOf, part_uri))
 
-		add_int(graph, feature_uri, ontology.hasID, feature.feature_id)
-		add_int(graph, feature_uri, ontology.hasParentID, feature.parent_feature_id)
+		# Parser-specific properties (PIBITI namespace)
+		add_string(graph, feature_uri, pibiti.rawFeatureLabel, feature.label)
+		add_int(graph, feature_uri, pibiti.hasID, feature.feature_id)
+		add_int(graph, feature_uri, pibiti.hasParentID, feature.parent_feature_id)
 
 		if feature.position:
-			add_double(graph, feature_uri, ontology.hasPositionPointX, feature.position[0])
-			add_double(graph, feature_uri, ontology.hasPositionPointY, feature.position[1])
-			add_double(graph, feature_uri, ontology.hasPositionPointZ, feature.position[2])
+			add_double(graph, feature_uri, pibiti.hasPositionPointX, feature.position[0])
+			add_double(graph, feature_uri, pibiti.hasPositionPointY, feature.position[1])
+			add_double(graph, feature_uri, pibiti.hasPositionPointZ, feature.position[2])
 		if feature.normal:
-			add_double(graph, feature_uri, ontology.hasPositionNormalX, feature.normal[0])
-			add_double(graph, feature_uri, ontology.hasPositionNormalY, feature.normal[1])
-			add_double(graph, feature_uri, ontology.hasPositionNormalZ, feature.normal[2])
+			add_double(graph, feature_uri, pibiti.hasPositionNormalX, feature.normal[0])
+			add_double(graph, feature_uri, pibiti.hasPositionNormalY, feature.normal[1])
+			add_double(graph, feature_uri, pibiti.hasPositionNormalZ, feature.normal[2])
 
-		add_double(graph, feature_uri, ontology.hasDiameter, feature.hole_diameter)
-		add_double(graph, feature_uri, ontology.hasRadius, feature.corner_radius)
-		add_double(graph, feature_uri, ontology.hasWidth, feature.flange_width)
-		add_double(graph, feature_uri, ontology.hasLength, feature.flange_length)
-		add_double(graph, feature_uri, ontology.hasBendRadius, feature.flange_bend_radius)
+		add_double(graph, feature_uri, pibiti.hasDiameter, feature.hole_diameter)
+		add_double(graph, feature_uri, pibiti.hasRadius, feature.corner_radius)
+		add_double(graph, feature_uri, pibiti.hasWidth, feature.flange_width)
+		add_double(graph, feature_uri, pibiti.hasLength, feature.flange_length)
+		add_double(graph, feature_uri, pibiti.hasBendRadius, feature.flange_bend_radius)
+		add_string(graph, feature_uri, pibiti.hasType, feature.flange_type_raw)
 
-		add_string(graph, feature_uri, ontology.hasType, feature.flange_type_raw)
-
+	# --- Parent-child links ---
 	for feature in features:
 		if feature.parent_feature_id is None:
 			continue
 		child_uri = feature_uri_map[feature.feature_id]
 		parent_uri = feature_uri_map.get(feature.parent_feature_id)
 		if parent_uri is not None:
-			graph.add((child_uri, ontology.hasParentFeature, parent_uri))
-			graph.add((parent_uri, ontology.hasChildFeature, child_uri))
+			graph.add((child_uri, pibiti.hasParentFeature, parent_uri))
+			graph.add((parent_uri, pibiti.hasChildFeature, child_uri))
 
 	return len(features), 1
 
 
+# ---------------------------------------------------------------------------
+# CLI
+# ---------------------------------------------------------------------------
+
 def build_argument_parser() -> argparse.ArgumentParser:
 	parser = argparse.ArgumentParser(
 		description=(
-			"Cria individuos de Workpiece/MachiningFeature no PIBITI2526.rdf "
+			"Cria individuos de SheetMetalPart/ProductFeature no PIBITI2526.rdf "
 			"a partir de pares TXT + _extraction.json."
 		)
 	)
@@ -351,7 +375,7 @@ def build_argument_parser() -> argparse.ArgumentParser:
 	parser.add_argument(
 		"--rdf-path",
 		default="PIBITI2526.rdf",
-		help="Arquivo RDF OWL que recebera os individuos.",
+		help="Arquivo RDF OWL que recebera os individuos (deve ser PIBITI2526.rdf).",
 	)
 	parser.add_argument(
 		"--select",
@@ -375,6 +399,13 @@ def main() -> int:
 
 	input_dir = Path(args.input_dir)
 	rdf_path = Path(args.rdf_path)
+
+	# --- Safety check: only write to PIBITI2526.rdf ---
+	if rdf_path.name not in ALLOWED_RDF_FILENAMES:
+		parser.error(
+			f"Gravacao recusada: o parser so pode gravar em {ALLOWED_RDF_FILENAMES}. "
+			f"Arquivo fornecido: {rdf_path.name}"
+		)
 
 	if not input_dir.exists() or not input_dir.is_dir():
 		parser.error(f"Diretorio de entrada invalido: {input_dir}")

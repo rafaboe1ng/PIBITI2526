@@ -1,0 +1,663 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/athon.leite/ontologies/2015/10/untitled-ontology-41#"
+     xml:base="http://www.semanticweb.org/athon.leite/ontologies/2015/10/untitled-ontology-41"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:MaterialsOntology="http://www.semanticweb.org/athon.leite/ontologies/2015/10/MaterialsOntology#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:Material_Core="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core">
+        <rdfs:comment>Ontology that associates materials with their respective properties</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasConversion -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasConversion"/>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasPropertyName -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasPropertyName"/>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasSharing -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasSharing"/>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasTranslation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasTranslation"/>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasTypeOfProperty -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasTypeOfProperty"/>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasUnitSystem -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasUnitSystem"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasApplication -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasApplication"/>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasCavityTemp -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasCavityTemp"/>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasChemResistValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasChemResistValue"/>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasCost -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasCost"/>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasDensityValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasDensityValue"/>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasHDTValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasHDTValue"/>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasHardnessValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasHardnessValue"/>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasMeltingTemp -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasMeltingTemp"/>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasShrinkageRateValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasShrinkageRateValue">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasTensileModulusValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasTensileModulusValue"/>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasTensileStrengthValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasTensileStrengthValue"/>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasThermalConducValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#hasThermalConducValue"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#ABS -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#ABS">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Thermoplastics"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#BioDegradeable -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#BioDegradeable">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polymer"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Thermoplastics"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Thermosets"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Cast_Irons -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Cast_Irons">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Ferrous"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Steel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Ceramic -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Ceramic">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Material_Core"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Metal"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Natural"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polymer"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Ductile_Iron -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Ductile_Iron">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Cast_Irons"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Epoxy_Resin -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Epoxy_Resin">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Thermosets"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Ferrous -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Ferrous">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Metal"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Nonferrous"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Gray_Iron -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Gray_Iron">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Cast_Irons"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Heat_Treatable -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Heat_Treatable">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Medium_Carbon"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#High_Alloy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#High_Alloy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Steel"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Low_Alloy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#High_Carbon -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#High_Carbon">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Low_Alloy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#High_Strenght_Low_Alloy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#High_Strenght_Low_Alloy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Low_Carbon"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Low_Alloy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Low_Alloy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Steel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Low_Carbon -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Low_Carbon">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Low_Alloy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Malleable_Iron -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Malleable_Iron">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Cast_Irons"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Material_Core -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Material_Core"/>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Medium_Carbon -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Medium_Carbon">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Low_Alloy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Melamine_Formaldehyde -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Melamine_Formaldehyde">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Thermosets"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Metal -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Metal">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Material_Core"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Natural"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polymer"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Natural -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Natural">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Material_Core"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polymer"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Nonferrous -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Nonferrous">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Metal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Nylon -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Nylon">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Thermoplastics"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Plain_High_Carbon -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Plain_High_Carbon">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#High_Carbon"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Plain_Low_Carbon -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Plain_Low_Carbon">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Low_Carbon"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Plain_Medium_Carbon -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Plain_Medium_Carbon">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Medium_Carbon"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polipropylene -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polipropylene">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Thermoplastics"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polyester_Resin -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polyester_Resin">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Thermosets"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polymer -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polymer">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Material_Core"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polystirene -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polystirene">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Thermoplastics"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Stainless -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Stainless">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#High_Alloy"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Tool_High_Alloy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Steel -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Steel">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Ferrous"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Thermoplastics -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Thermoplastics">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polymer"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Thermosets -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Thermosets">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polymer"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Tool_High_Alloy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Tool_High_Alloy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#High_Alloy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Tool_Low_Alloy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Tool_Low_Alloy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#High_Carbon"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Urea_Formaldehyde -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Urea_Formaldehyde">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Thermosets"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#White_Iron -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#White_Iron">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Cast_Irons"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#P2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#P2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#High_Strenght_Low_Alloy"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Low_Carbon"/>
+        <Material_Core:hasDensityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.86</Material_Core:hasDensityValue>
+        <Material_Core:hasHardnessValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">61</Material_Core:hasHardnessValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#P20 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#P20">
+        <rdf:type rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#High_Strenght_Low_Alloy"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Low_Carbon"/>
+        <Material_Core:hasApplication>P20 tool steels are used for low temperature applications that include injection molds and die casting dies.</Material_Core:hasApplication>
+        <Material_Core:hasDensityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.85</Material_Core:hasDensityValue>
+        <Material_Core:hasHardnessValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</Material_Core:hasHardnessValue>
+        <Material_Core:hasTensileStrengthValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1000</Material_Core:hasTensileStrengthValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#P21 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#P21">
+        <rdf:type rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#High_Strenght_Low_Alloy"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Low_Carbon"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#P3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#P3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#High_Strenght_Low_Alloy"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Low_Carbon"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#P4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#P4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#High_Strenght_Low_Alloy"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Low_Carbon"/>
+        <Material_Core:hasDensityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.85</Material_Core:hasDensityValue>
+        <Material_Core:hasHardnessValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">42</Material_Core:hasHardnessValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#P5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#P5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#High_Strenght_Low_Alloy"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Low_Carbon"/>
+        <Material_Core:hasDensityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.85</Material_Core:hasDensityValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#P6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#P6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#High_Strenght_Low_Alloy"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Low_Carbon"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#PSC1070 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#PSC1070">
+        <rdf:type rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polystirene"/>
+        <Material_Core:hasApplication>Foamed packaging, Trays &amp; small boxes</Material_Core:hasApplication>
+        <Material_Core:hasShrinkageRateValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0055</Material_Core:hasShrinkageRateValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#PSC1160 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#PSC1160">
+        <rdf:type rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polystirene"/>
+        <Material_Core:hasApplication>Foamed packaging, Trays &amp; small boxes, Healthcare grades, White goods, Corrugated &amp; sheets, Technical parts, Compounds &amp; masterbatches, XPS, Food &amp; beverage packaging, Healthcare, Appliances, Packaging general, Technical parts, Compounds &amp; masterbatches, Insulation</Material_Core:hasApplication>
+        <Material_Core:hasShrinkageRateValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0055</Material_Core:hasShrinkageRateValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#PSC1340 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#PSC1340">
+        <rdf:type rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polystirene"/>
+        <Material_Core:hasApplication>Dairy, Trays &amp; small boxes, Disposable, Housewares, Healthcare grades, Electrical appliances, White goods, Media &amp; jewel boxes, Corrugated &amp; sheets, Technical parts, Compounds &amp; masterbatches, Food &amp; beverage packaging, Housewares, Healthcare, Appliances, Crates &amp; boxes, Packaging general, Technical parts, Compounds &amp; masterbatches</Material_Core:hasApplication>
+        <Material_Core:hasShrinkageRateValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0055</Material_Core:hasShrinkageRateValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#PSC1450N -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#PSC1450N">
+        <rdf:type rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polystirene"/>
+        <Material_Core:hasApplication>Foamed packaging, Compounds &amp; masterbatches, XPS, Food &amp; beverage packaging, Compounds &amp; masterbatches, Insulation</Material_Core:hasApplication>
+        <Material_Core:hasShrinkageRateValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0055</Material_Core:hasShrinkageRateValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#PSC1540 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#PSC1540">
+        <rdf:type rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polystirene"/>
+        <Material_Core:hasApplication>Dairy, Trays &amp; small boxes, Disposable, Housewares, Healthcare grades, White goods, Media &amp; jewel boxes, Corrugated &amp; sheets, Technical parts, Compounds &amp; masterbatches, Food &amp; beverage packaging, Housewares, Healthcare, Appliances, Crates &amp; boxes, Packaging general, Technical parts, Compounds &amp; masterbatches</Material_Core:hasApplication>
+        <Material_Core:hasShrinkageRateValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0055</Material_Core:hasShrinkageRateValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#PSC1810 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#PSC1810">
+        <rdf:type rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polystirene"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#PSC1960N -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#PSC1960N">
+        <rdf:type rdf:resource="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polystirene"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#ABS"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Nylon"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polipropylene"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polystirene"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Ductile_Iron"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Gray_Iron"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Malleable_Iron"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#White_Iron"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Epoxy_Resin"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Melamine_Formaldehyde"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Polyester_Resin"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Urea_Formaldehyde"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#High_Carbon"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Low_Carbon"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/athon.leite/ontologies/2015/10/Material_Core#Medium_Carbon"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.1.3.20151118-2017) https://github.com/owlcs/owlapi -->
+

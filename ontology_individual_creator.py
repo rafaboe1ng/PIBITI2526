@@ -19,7 +19,7 @@ PIBITI_NS = "http://www.semanticweb.org/rafab/ontologies/PIBITI2526#"
 
 ALLOWED_RDF_FILENAMES = {"PIBITI2526.rdf"}
 
-PART_CLASS = "SheetMetalPart"
+PART_CLASS = "Sheet_Metal_Part"
 
 FEATURE_CLASS_MAP = {
 	"web": "Web",
@@ -30,11 +30,11 @@ FEATURE_CLASS_MAP = {
 	"hole": "Hole",
 	"slot": "Slot",
 	"thread": "Thread",
-	"attachment hole": "AttachmentHole",
-	"tooling hole": "ToolingHole",
-	"attachment flange": "AttachmentFlange",
-	"deformed flange": "DeformedFlange",
-	"stiffening flange": "StiffeningFlange",
+	"attachment hole": "Attachment_Hole",
+	"tooling hole": "Tooling_Hole",
+	"attachment flange": "Attachment_Flange",
+	"deformed flange": "Deformed_Flange",
+	"stiffening flange": "Stiffening_Flange",
 }
 
 REQUIRED_JSON_KEYS = {
@@ -264,7 +264,7 @@ def ensure_pair_consistency(
 
 
 def class_for_label(label: str) -> str:
-	return FEATURE_CLASS_MAP.get(label.lower().strip(), "ProductFeature")
+	return FEATURE_CLASS_MAP.get(label.lower().strip(), "Product_Feature")
 
 
 def add_string(graph: Graph, subject, predicate, value: Optional[str]) -> None:
@@ -286,10 +286,7 @@ def pair_already_added(graph: Graph, base_name: str) -> bool:
 	pibiti = Namespace(PIBITI_NS)
 	base_token = safe_identifier(base_name)
 	uri = pibiti[base_token]
-	return (
-		(uri, RDF.type, pibiti.SheetMetalPart) in graph
-		or (uri, RDF.type, pibiti.Part) in graph
-	)
+	return (uri, RDF.type, pibiti.Sheet_Metal_Part) in graph
 
 
 # ---------------------------------------------------------------------------
@@ -363,7 +360,7 @@ def process_pair(graph: Graph, base_name: str, txt_path: Path, json_path: Path) 
 def build_argument_parser() -> argparse.ArgumentParser:
 	parser = argparse.ArgumentParser(
 		description=(
-			"Cria individuos de SheetMetalPart/ProductFeature no PIBITI2526.rdf "
+			"Cria individuos de Sheet_Metal_Part/Product_Feature no PIBITI2526.rdf "
 			"a partir de pares TXT + _extraction.json."
 		)
 	)

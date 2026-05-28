@@ -108,6 +108,13 @@ def parse_point_tuple(text: str) -> Tuple[float, float, float]:
 
 def split_flange_type(raw_type: str) -> Tuple[Optional[str], Optional[str], Optional[str], Optional[str], Optional[str]]:
 	parts = [part.strip() for part in raw_type.split(",") if part.strip()]
+	if len(parts) != 5:
+		import warnings
+		warnings.warn(
+			f"hasType com {len(parts)} token(s) (esperado 5): '{raw_type}'. "
+			"Propriedades decompostas populadas parcialmente.",
+			stacklevel=3,
+		)
 	while len(parts) < 5:
 		parts.append(None)
 	return parts[0], parts[1], parts[2], parts[3], parts[4]
@@ -307,6 +314,19 @@ def process_pair(graph: Graph, base_name: str, txt_path: Path, json_path: Path) 
 	add_string(graph, part_uri, pibiti.hasPartName, txt_part_name)
 	add_double(graph, part_uri, pibiti.hasThickness, txt_thickness)
 
+	# B.1 — traceability and aggregate properties from JSON/TXT sources
+	add_string(graph, part_uri, pibiti.hasSourceFile, str(txt_path))
+	material_label = json_data.get("material")
+	if material_label is not None and str(material_label).strip():
+		add_string(graph, part_uri, pibiti.hasMaterialLabel, str(material_label).strip())
+	total_features_json = json_data.get("total_features")
+	if total_features_json is not None:
+		add_int(graph, part_uri, pibiti.hasFeatureCount, int(total_features_json))
+
+	# B.2 — hasMaterial: AL7075 fixo para todas as peças do dataset PIBITI2526
+	# Dataset não contém informação de material; AL7075 é assumido por definição do projeto.
+	graph.add((part_uri, pibiti.hasMaterial, pibiti.Aluminum_7075))
+
 	# --- Features ---
 	feature_uri_map = {}
 	for feature in features:
@@ -321,6 +341,8 @@ def process_pair(graph: Graph, base_name: str, txt_path: Path, json_path: Path) 
 
 		# Parser-specific properties (PIBITI namespace)
 		add_string(graph, feature_uri, pibiti.rawFeatureLabel, feature.label)
+		# B.3 — label normalizado pelo class_for_label(), coexiste com rawFeatureLabel
+		add_string(graph, feature_uri, pibiti.hasCanonicalLabel, feature_class)
 		add_int(graph, feature_uri, pibiti.hasID, feature.feature_id)
 		add_int(graph, feature_uri, pibiti.hasParentID, feature.parent_feature_id)
 
@@ -339,6 +361,13 @@ def process_pair(graph: Graph, base_name: str, txt_path: Path, json_path: Path) 
 		add_double(graph, feature_uri, pibiti.hasLength, feature.flange_length)
 		add_double(graph, feature_uri, pibiti.hasBendRadius, feature.flange_bend_radius)
 		add_string(graph, feature_uri, pibiti.hasType, feature.flange_type_raw)
+		# B.4 — decomposição dos 5 tokens de hasType em propriedades discretas
+		# hasType (legado) é mantido para rastreabilidade; os novos triples coexistem
+		add_string(graph, feature_uri, pibiti.hasBendDirection, feature.flange_type_direction)
+		add_string(graph, feature_uri, pibiti.hasBendCount, feature.flange_type_multiplicity)
+		add_string(graph, feature_uri, pibiti.hasBendCondition, feature.flange_type_placement)
+		add_string(graph, feature_uri, pibiti.hasFlangeProfile, feature.flange_type_geometry)
+		add_string(graph, feature_uri, pibiti.hasFlangeAngleType, feature.flange_type_angle_type)
 
 	# --- Parent-child links ---
 	for feature in features:

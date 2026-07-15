@@ -1,0 +1,14 @@
+{
+  "part_name": "Val1",
+  "thickness": 30.0,
+  "holes": 14,
+  "bosses": 0,
+  "slots": 0,
+  "chamfers": 7,
+  "threads": 0,
+  "flanges": 3,
+  "corners": 7,
+  "total_features": 25,
+  "method": "afr_improved_multi_agent",
+  "improved_multi_agent": true
+}

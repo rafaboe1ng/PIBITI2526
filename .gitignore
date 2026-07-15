@@ -27,8 +27,6 @@ dist/
 *.sqlite3
 
 # IDE and OS files
-.claude
-.github/
 .vscode/
 .idea/
 .DS_Store
@@ -37,12 +35,3 @@ Thumbs.db
 # Local environment/config files
 .env
 .env.*
-
-# Repository-specific generated outputs
-test_afr_improved_multi_agent_extractor/*_extraction.json
-test_afr_improved_multi_agent_extractor/*_summary.json
-test_afr_improved_multi_agent_extractor/*.txt
-
-# Requested to ignore in this repository
-requirements.txt
-Bibliografia

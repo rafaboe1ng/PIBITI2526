@@ -395,7 +395,7 @@ def build_argument_parser() -> argparse.ArgumentParser:
 	)
 	parser.add_argument(
 		"--input-dir",
-		default="test_afr_improved_multi_agent_extractor",
+		default="Val1",
 		help="Diretorio com os pares TXT/JSON.",
 	)
 	parser.add_argument(
